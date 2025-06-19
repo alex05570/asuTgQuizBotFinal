@@ -41,20 +41,17 @@ class UserProgress(Base):
     last_answer_time = Column(DateTime, default=datetime.utcnow)
     question_ids = Column(
         String, nullable=True
-    )  # Хранит ID выбранных вопросов через запятую
+    )  
 
 
 class UserStats(Base):
     __tablename__ = "user_stats"
-
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, unique=True)
     username = Column(String)
-    # Общий MMR и тесты (для совместимости)
     mmr = Column(Integer, default=1000)  # Начальный MMR
     total_tests = Column(Integer, default=0)
     last_test_date = Column(DateTime)
-    # Новые поля для каждого языка
     mmr_python = Column(Integer, default=1000)
     mmr_java = Column(Integer, default=1000)
     mmr_sql = Column(Integer, default=1000)

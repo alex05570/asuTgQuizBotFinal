@@ -108,7 +108,7 @@ async def handle_language_selection(update: Update, context: ContextTypes.DEFAUL
     query = update.callback_query
     await query.answer()
 
-    # Сохраняем выбранный язык в контексте пользователя
+    # Сохраняем выбранный язык пользователя
     context.user_data["selected_language"] = query.data.split("_")[1]
 
     # Показываем уровни сложности для выбранного языка
