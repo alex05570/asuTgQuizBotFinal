@@ -50,9 +50,17 @@ class UserStats(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, unique=True)
     username = Column(String)
+    # Общий MMR и тесты (для совместимости)
     mmr = Column(Integer, default=1000)  # Начальный MMR
     total_tests = Column(Integer, default=0)
     last_test_date = Column(DateTime)
+    # Новые поля для каждого языка
+    mmr_python = Column(Integer, default=1000)
+    mmr_java = Column(Integer, default=1000)
+    mmr_sql = Column(Integer, default=1000)
+    total_tests_python = Column(Integer, default=0)
+    total_tests_java = Column(Integer, default=0)
+    total_tests_sql = Column(Integer, default=0)
 
     def calculate_mmr_change(
         self, correct_answers: int, difficulty_level: str, opponent_mmr: int = 1500
